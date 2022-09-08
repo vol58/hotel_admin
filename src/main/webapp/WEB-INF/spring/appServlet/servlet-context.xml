@@ -25,7 +25,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.co.hotel_admin_admin" />
+	<context:component-scan base-package="kr.co.hotel_admin" />
 	
 	
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -43,6 +43,6 @@
 	    <beans:constructor-arg ref="sqlSessionFactory"></beans:constructor-arg>
 	</beans:bean>
 	
-	<mybatis-spring:scan base-package="kr.co.hotel_admin_admin"/>
+	<mybatis-spring:scan base-package="kr.co.hotel_admin"/>
 	
 </beans:beans>

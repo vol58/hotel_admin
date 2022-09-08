@@ -111,12 +111,6 @@ footer {
 </head>
 <body>
 
-	<div id="message">
-		<!-- 간단메세지 -->
-		<div id="left">최상단 배너</div>
-		<div id="right">X</div>
-	</div>
-
 	<header> <!--  로고, 로그인, 회원가입 -->
 	<div id="left">?? 호텔 </div>
 	<div id="right">
@@ -126,7 +120,7 @@ footer {
 			<a href="../member/myinfo">회원정보</a> 
  		</c:if>
  		<c:if test="${userid == null }">
-		<a href="../member/login">로그인</a> | <a href="../member/member_input">회원가입</a>
+		<a href="../member/login">관리자 로그인</a> 
 		</c:if>
 
 	</div>
@@ -134,12 +128,11 @@ footer {
 
 	<nav> <!-- 메뉴및 링크 -->
 	<ul class="menu">
-		<li>공지사항</li>
-		<li>객실소개</li>
-		<li><a href="/hotel/book/book">예약하기</a></li>
-		<li>FAQ</li>
-		<li>이용후기</li>
-		<li>호텔 몰</li>
+		<li>회원관리</li>		
+		<li><a href="/hotel/book/book">예약관리</a></li>
+		<li>게시판관리</li>
+		<li>상품관리</li>
+		<li>주문관리</li>
 		
 	</ul>
 	</nav>
