@@ -112,7 +112,7 @@ footer {
 <body>
 
 	<header> <!--  로고, 로그인, 회원가입 -->
-	<div id="left">?? 호텔 </div>
+	<div id="left"><a href="../main/index">?? 호텔 </a></div>
 	<div id="right">
 		<c:if test="${userid != null}">
 			${userid}(${name}) 님 반갑습니다  
@@ -128,7 +128,7 @@ footer {
 
 	<nav> <!-- 메뉴및 링크 -->
 	<ul class="menu">
-		<li>회원관리</li>		
+		<li><a href="../member/member_list">회원관리</li>		
 		<li><a href="/hotel/book/book">예약관리</a></li>
 		<li>게시판관리</li>
 		<li>상품관리</li>

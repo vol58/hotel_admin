@@ -4,5 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="kr.co.hotel_admin.mapper.MemberMapper">
+   <select id="member_list" resultType="kr.co.hotel_admin.vo.MemberVO">
+    select * from member where ${param1} like concat('%',#{param2},'%') 
+    order by ${param3} asc limit #{param4},10  
+  </select>
+  
+  
+   <select id="getchong" resultType="Integer">  
+   select ceil(count(*)/10) from member where ${param1} like concat('%',#{param2},'%')
+ </select>
  
+ <insert id="dobae">
+  insert into member(userid,pwd,writeday,state) values(#{param1},'1234',now(),999)
+ </insert>
+ 
+ <select id="member_content" resultType="kr.co.hotel_admin.vo.MemberVO">
+  select * from member where id=#{param1}
+ </select>
+ <select id="state1_list" resultType="kr.co.hotel_admin.vo.MemberVO">
+  select * from member where state=1
+ </select>
  </mapper>

@@ -16,7 +16,11 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 				
-		return "/main/index";
+		return "redirect:/main/index";
 	}
-	
+	@RequestMapping("/main/index")
+    public String index() 
+	{ 
+	   return "/main/index"; 
+	}
 }

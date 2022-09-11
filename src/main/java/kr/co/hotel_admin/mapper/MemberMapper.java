@@ -1,5 +1,16 @@
 package kr.co.hotel_admin.mapper;
 
-public interface MemberMapper {
+import java.util.ArrayList;
 
+import kr.co.hotel_admin.vo.MemberVO;
+
+public interface MemberMapper {
+  
+	public ArrayList<MemberVO> member_list(String sel,String keyword,String state,int start);
+	public int getchong(String sel,String keyword);
+
+	public void dobae(String userid);
+	public MemberVO member_content(String id);
+	
+	public ArrayList<MemberVO> state1_list();
 }
