@@ -14,5 +14,6 @@ public interface MemberMapper {
 	public ArrayList<MemberVO> state1_list();
 	public int check_userid(String userid);
 	public void update_ok(MemberVO mvo);
+	public void member_delete(String id);
 	
 }

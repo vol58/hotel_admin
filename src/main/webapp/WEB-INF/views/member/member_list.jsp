@@ -26,15 +26,23 @@ section {
 <script>
 window.onload=function() // 문서를읽을떄 온로드
 { 
+	if(<%=request.getParameter("del")%>==1)
+	{
+		alert("회원기록이 삭제되었습니다");
+	}
 	// 검색필드를 보여주기 (select태그의 밸류가 일치할경우)
-	<c:if test="${sel!='id'}">
+	<c:if test="${sel !='id'}">
 	 document.getElementById("sel").value="${sel}";
 	 </c:if>
+	 
+	 <c:if test="${!empty state}">
+	 document.getElementById("st").value="${state}";
+	 </c:if>
 }
-function state_change()
+function state_change(state)
 {
-	 location="member_list?state=ymd";
-	}
+	 location="member_list?state="+state;
+	} 
 </script>
 </head>
 <body>
@@ -43,8 +51,9 @@ function state_change()
  <b>
   ※요구사항 ※<p>
  1. 멤버리스트 출력 <p>
- 2. 페이징구현 </b>
- 3. 상태(state)항목 누를시 상태별정렬 
+ 2. 페이징구현 </b> 
+ 3. 상태(state)항목 누를시 상태별정렬 <p>
+ 현재 에러 : 선택항목 만들기 , select 항목눌럿을떄 페이징 1,2,3,4,5,6 .. 계속뜸
  <c:if test="${ empty list }">
     없음
  </c:if>
@@ -54,29 +63,32 @@ function state_change()
  <h2><a href="member_list">회원정보조회</a></h2> <p>
  <div>
 <form method="post" action="member_list">
- <select name="sel" id="sel"> 
-  <option value="0">선택</option>
+ <select name="sel" id="sel">
   <option value="userid">아이디</option>
   <option value="phone">전화번호</option>
   <option value="email">이메일</option>
  </select>
  <input type="text" name="keyword" size="10" value="${keyword}">
  <input type="submit" value="검색">
- </form>
  </div>
  
  </caption>
  <tr>
   <td>
-  <b onclick="state_change()">상태(state)</b>  <!-- 아직미구현 누를시 상태별로 order by기능 -->
+  <select id="st" name="state" onchange="state_change(this.value)">
+   <option value="0">정상회원</option>
+   <option value="1">탈퇴신청중 회원</option>
+   <option value="2">탈퇴완료 회원</option>
+   <option value="777"> 관리자</option>
+   <option value="999"> 가짜회원</option>
+  </select>
+</form>
   </td>
   <td>고유값(id)</td>
   <td id="userid">회원 아이디</td>
   <td>비밀번호</td>
   <td>이름</td>
-  <td>핸드폰번호</td>
-  <td>이메일</td>
-  <td>가입일</td>
+  <td width="300">고객메모</td>
  </tr>
  
    <c:if test="${empty list}"> <!-- 검색된값이 없을떄 출력부분 -->
@@ -89,13 +101,13 @@ function state_change()
    
   <c:forEach items="${list}" var="mvo">
      <c:if test="${mvo.state == 0}">
-       <c:set var="state" value="정상회원"/>
+       <c:set var="state" value="<b style='color:green'> 정상회원 </b>" />
      </c:if>
       <c:if test="${mvo.state == 1}">
-        <c:set var="state" value="탈퇴신청중"/>
+        <c:set var="state" value="<span style='text-decoration:line-through'>탈퇴신청중 </span>" />
        </c:if>
     <c:if test="${mvo.state == 2}">
-         <c:set var="state" value="탈퇴완료"/>
+         <c:set var="state" value="<b>탈퇴완료</b>"/>
      </c:if>
      <c:if test="${mvo.state == 777}">
          <c:set var="state" value="<b style='color:red'>관리자</b>" />       
@@ -109,14 +121,12 @@ function state_change()
   <td> <a id="userid" href="member_content?id=${mvo.id}&page=${page}&sel=${sel}&keyword=${keyword}">${mvo.userid}</a></td> <!-- 고유값 id들고가기 -->
   <td>${mvo.pwd}</td>
   <td>${mvo.name}</td>
-  <td>${mvo.phone}</td>
-  <td>${mvo.email}</td>
-  <td>${mvo.writeday}</td>  
+  <td>${mvo.memo}</td>  
   </tr>    
  </c:forEach>
  
   <tr>
-     <td colspan="8" align="center">
+     <td colspan="6" align="center">
      
          <!-- ◀◀   -->
      <c:if test="${pstart!=1}">

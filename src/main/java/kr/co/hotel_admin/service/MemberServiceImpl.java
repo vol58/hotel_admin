@@ -43,6 +43,7 @@ public class MemberServiceImpl implements MemberService{
 		String sel;
 			   if(request.getParameter("sel")==null)
 				    sel="id"; // select 필드에 없는거 아무거나줌
+			 
 			   else
 				   sel=request.getParameter("sel");
 				
@@ -63,10 +64,10 @@ public class MemberServiceImpl implements MemberService{
 		String state;
 	     if(request.getParameter("state")==null)
 	     {
-	    	 state="id";
+	    	 state="";
 	     }
 	     else
-	    	 state=request.getParameter("state");
+	    	 state="and state="+request.getParameter("state");
 	    	
 		
 	
@@ -86,7 +87,7 @@ public class MemberServiceImpl implements MemberService{
 			
 			model.addAttribute("sel",sel);
 			model.addAttribute("keyword",keyword);
-			
+			model.addAttribute("state",request.getParameter("state"));
 		return "/member/member_list";
 	}
 
@@ -95,7 +96,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		String userid="test";
 		
-		for(int i=1;i<=199;i++)
+		for(int i=1;i<=50;i++)
 		{
 		
 			mapper.dobae(userid+i);
@@ -110,6 +111,8 @@ public class MemberServiceImpl implements MemberService{
 		 String id=request.getParameter("id");
 		 
 		 MemberVO mvo=mapper.member_content(id);
+		 mvo.setMemo(mvo.getMemo().replace("\r\n", "<br>")); // 메모내용 띄어쓰기
+		 
 		 model.addAttribute("mvo",mvo);
 		 model.addAttribute("page",request.getParameter("page"));
 		 model.addAttribute("sel",request.getParameter("sel"));
@@ -142,6 +145,13 @@ public class MemberServiceImpl implements MemberService{
 		mapper.update_ok(mvo);
 		  
 		return "redirect:/member/member_content?id="+id+"&page="+page+"&sel="+sel+"&keyword="+keyword+"&chk=1";
+	}
+
+	@Override
+	public String member_delete(HttpServletRequest request) {
+		String id=request.getParameter("id");
+		mapper.member_delete(id);
+		return "redirect:/member/member_list?del=1";
 	}
 
 	

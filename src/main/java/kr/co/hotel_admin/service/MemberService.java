@@ -16,6 +16,7 @@ public interface MemberService {
 	public String state_change(Model model);
 	public void check_userid(HttpServletRequest request,PrintWriter out);
     public String update_ok(MemberVO mvo);
+    public String member_delete(HttpServletRequest request);
 
 
 }

@@ -7,6 +7,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+section {
+	width: 1000px;
+	height: 600px;
+	margin: auto;
+    margin-top:50px;
+}
+section table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+</style>
 <script>
  onload=function()
  {  
@@ -57,6 +69,7 @@
  		 {
  		   document.getElementById("aa").innerText="아이디는 6자이상입니다";
  		   document.getElementById("aa").style.color="red";
+ 		    uchk=0;
  		 }
  }  
  
@@ -130,6 +143,14 @@
 	   return true;
 	    }
  }
+ 
+ function mem_del(id)
+ {
+	 if(confirm("회원을 삭제하시겠습니까?\n※ 삭제시 데이터를 복구 할 수 없습니다. ※"))
+		 {
+		  location="member_delete?id="+id;
+		 }
+ }
 </script>
 </head>
 <body>
@@ -189,7 +210,7 @@
   <tr>
    <td> 고객메모 </td>
    <td>
-    <textarea rows="5" cols="60" name="memo"></textarea>
+    <textarea rows="5" cols="60" name="memo">${mvo.memo}</textarea>
    </td>
   </tr>
   
@@ -201,9 +222,13 @@
    <td colspan="2" align="center">
     <input type="submit" value="수정하기">
     <input type="button" onclick="mem_del(${mvo.id})" value="회원삭제">    
+   </td>
+  </tr>
+  <tr>
+   <td colspan="2" align="center">
     <input type="button" onclick="location='member_list?page=${page}&sel=${sel}&keyword=${keyword}'" value="목록">
     </td>
-  </tr>
+  </tr>  
  </table>
  </form>
  

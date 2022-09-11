@@ -52,4 +52,10 @@ public class MemberController {
     {
     	return service.update_ok(mvo);
     }
+    @RequestMapping("/member/member_delete")
+    public String member_delete(HttpServletRequest request)
+    {
+    	return service.member_delete(request);
+    }
+    
 }
