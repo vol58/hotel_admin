@@ -24,4 +24,11 @@
  <select id="state1_list" resultType="kr.co.hotel_admin.vo.MemberVO">
   select * from member where state=1
  </select>
+ <select id="check_userid" resultType="Integer">
+   select count(*) from member where userid=#{param1}
+  </select>
+ <update id="update_ok">
+   update member set userid=#{userid},pwd=#{pwd},name=#{name},ymd=#{ymd},phone=#{phone},
+   email=#{email},state=#{state},memo=#{memo} where id=#{id} 
+ </update>
  </mapper>

@@ -11,6 +11,8 @@ public interface MemberMapper {
 
 	public void dobae(String userid);
 	public MemberVO member_content(String id);
-	
 	public ArrayList<MemberVO> state1_list();
+	public int check_userid(String userid);
+	public void update_ok(MemberVO mvo);
+	
 }

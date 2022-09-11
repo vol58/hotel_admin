@@ -1,5 +1,7 @@
 package kr.co.hotel_admin.controller;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.hotel_admin.service.MemberService;
+import kr.co.hotel_admin.vo.MemberVO;
 
 @Controller
 public class MemberController {
@@ -38,5 +41,15 @@ public class MemberController {
 	{
 		return service.state_change(model);
 	}
-
+	 @RequestMapping("/member/check_userid")
+	   public void check_userid(HttpServletRequest request,PrintWriter out)
+	   {
+		   service.check_userid(request,out);
+	   }
+	   
+    @RequestMapping("/member/update_ok")
+    public String update_ok(MemberVO mvo)
+    {
+    	return service.update_ok(mvo);
+    }
 }

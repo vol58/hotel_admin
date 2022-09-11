@@ -3,6 +3,27 @@ package kr.co.hotel_admin.vo;
 public class MemberVO {
 	private int id, state;
 	private String userid, pwd, name, ymd, phone, email,writeday, memo;
+	
+	private String page,sel,keyword; // 페이징부분도 같이받아오기
+	
+	public String getPage() {
+		return page;
+	}
+	public void setPage(String page) {
+		this.page = page;
+	}
+	public String getSel() {
+		return sel;
+	}
+	public void setSel(String sel) {
+		this.sel = sel;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public int getId() {
 		return id;
 	}

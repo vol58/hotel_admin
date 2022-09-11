@@ -1,5 +1,6 @@
 package kr.co.hotel_admin.service;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -123,6 +124,24 @@ public class MemberServiceImpl implements MemberService{
 		ArrayList<MemberVO> list=mapper.state1_list();
 		model.addAttribute("list",list);
 		return "/member/state_change";
+	}
+
+	@Override
+	public void check_userid(HttpServletRequest request, PrintWriter out) {
+		 String userid=request.getParameter("userid");
+		 int chk=mapper.check_userid(userid);
+		out.print(chk);
+	}
+	
+	@Override
+	public String update_ok(MemberVO mvo) {
+		int id=mvo.getId();
+		String page=mvo.getPage();
+		String sel=mvo.getSel();
+		String keyword=mvo.getKeyword();
+		mapper.update_ok(mvo);
+		  
+		return "redirect:/member/member_content?id="+id+"&page="+page+"&sel="+sel+"&keyword="+keyword+"&chk=1";
 	}
 
 	
