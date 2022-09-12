@@ -88,6 +88,30 @@ nav {
 	margin: auto;
 }
 
+nav .menu .a1{  /* 회원관리 ul태그 */
+
+ position:relative;
+}
+nav .menu .a1 li{
+list-style-type:none;
+}
+nav .menu .a1 .mem{ /* 회원관리 li태그 */
+     position:absolute;
+      padding-left:0px;
+      border:1px solid #cccccc;
+      display:none;
+      background:white;
+    left:17px;
+      top:26px;
+      padding-left:0px;
+      padding-top:5px;
+      width:150px;
+      height:80px;
+      font-weight:bold;
+      font-size:18px;
+}
+
+
 
 nav .menu>li { 
 	list-style-type: none;
@@ -106,6 +130,21 @@ footer {
 	margin: auto;
 }
 </style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function()
+{
+	 $("nav .a1").mouseover(function()
+	 {
+		$("nav .mem").show();
+	 });
+	 $("nav .a1").mouseout(function()
+			 {
+				$("nav .mem").hide();
+			 });
+});
+		   
+</script>
 <decorator:head/>
 
 </head>
@@ -128,7 +167,13 @@ footer {
 
 	<nav> <!-- 메뉴및 링크 -->
 	<ul class="menu">
-		<li><a href="../member/member_list">회원관리</li>		
+		<li class="a1"><a href="../member/member_list">회원관리
+		  <ul class="mem">
+		    <li><a href="../member/member_list">회원리스트</a></li>
+		    <li><a href="../member/qna_list">1:1문의관리</a></li>
+		    <li><a href="../member/member_list">예약관리</a></li>
+		  </ul>
+		</li>		
 		<li><a href="/hotel/book/book">예약관리</a></li>
 		<li>게시판관리</li>
 		<li>상품관리</li>
