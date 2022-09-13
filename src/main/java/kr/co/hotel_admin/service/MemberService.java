@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import kr.co.hotel_admin.vo.CaskVO;
 import kr.co.hotel_admin.vo.MemberVO;
 
 public interface MemberService {
@@ -20,6 +21,7 @@ public interface MemberService {
 
     //qna관련
     public String qna_list(Model model);
-
+    public String qna_content(HttpServletRequest request,Model model);
+    public String qna_anwser_ok(CaskVO cvo);
 
 }

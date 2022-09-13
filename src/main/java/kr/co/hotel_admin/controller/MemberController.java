@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.hotel_admin.service.MemberService;
+import kr.co.hotel_admin.vo.CaskVO;
 import kr.co.hotel_admin.vo.MemberVO;
 
 @Controller
@@ -66,8 +67,13 @@ public class MemberController {
     	return service.qna_list(model);
     }
     @RequestMapping("/member/qna_content")
-    public String qna_content()
+    public String qna_content(HttpServletRequest request,Model model)
     {
-    	return "/member/qna_content";
+    	return service.qna_content(request,model);
+    }
+    @RequestMapping("/member/qna_anwser_ok")
+    public String qna_anwser_ok(CaskVO cvo)
+    {
+    	return service.qna_anwser_ok(cvo);
     }
 }

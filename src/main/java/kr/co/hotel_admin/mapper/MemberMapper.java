@@ -20,5 +20,6 @@ public interface MemberMapper {
 	
 	// qna관련
 	public ArrayList<CaskVO> qna_list();
-	
+	public CaskVO qna_content(String id);
+	public void qna_anwser_ok(CaskVO cvo);
 }

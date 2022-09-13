@@ -169,6 +169,19 @@ public class MemberServiceImpl implements MemberService{
 		return "/member/qna_list";
 	}
 
+	@Override
+	public String qna_content(HttpServletRequest request, Model model) {
+		 String id=request.getParameter("id");
+		 model.addAttribute("cvo",mapper.qna_content(id));
+		return "/member/qna_content";
+	}
+
+	@Override
+	public String qna_anwser_ok(CaskVO cvo) {
+		  mapper.qna_anwser_ok(cvo);
+		return "redirect:/member/qna_content?id="+cvo.getId();
+	}
+
 	
 	
 }

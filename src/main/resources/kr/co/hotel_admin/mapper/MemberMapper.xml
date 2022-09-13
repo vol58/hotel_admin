@@ -38,4 +38,10 @@
  <select id="qna_list" resultType="kr.co.hotel_admin.vo.CaskVO">
   select * from cusask order by id desc
  </select>
+ <select id="qna_content" resultType="kr.co.hotel_admin.vo.CaskVO">
+   select * from cusask where id=#{param1}
+ </select>
+ <update id="qna_anwser_ok">
+  update cusask set anwser=#{anwser},state=1 where id=#{id}
+ </update>
  </mapper>
