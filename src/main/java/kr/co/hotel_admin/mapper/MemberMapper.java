@@ -19,7 +19,7 @@ public interface MemberMapper {
 	public void member_delete(String id); 
 	
 	// qna관련
-	public ArrayList<CaskVO> qna_list();
+	public ArrayList<CaskVO> qna_list(String state);
 	public CaskVO qna_content(String id);
 	public void qna_anwser_ok(CaskVO cvo);
 }

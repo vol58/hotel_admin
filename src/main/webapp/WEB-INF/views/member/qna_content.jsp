@@ -92,9 +92,10 @@ width:800px;
      </c:if>
      </tr>
   </table>
-  
    </div>
-     <!--  답변완료시 달기 -->
+   
+    <!--  답변대기중일때 출력내용 -->
+   <c:if test="${cvo.state==0}">
      <div id="tb2" style="display:${display}">
     <form method="post" action="qna_anwser_ok">
     <input type="hidden" name="id" value="${cvo.id}">
@@ -111,12 +112,27 @@ width:800px;
     <tr>
      <td colspan="2" align="center">
      <input type="submit" value="답변하기">
-     <input type="button" value="목록">
      </td>
     </tr>
      </table>
      </form>
      </div>
+     </c:if>
+     
+     
+     <!--  답변완료 출력내용 -->
+     <c:if test="${cvo.state==1}">
+     <div id="tb2" style="display:${display}">
+     <b align="left">└> </b>
+     <table width="600" border="1">
+      <caption><h2> 문의결과 </h2></caption>
+     <tr>
+      <td height="200" width="200"><b>문의답변</b> </td>
+      <td width="400">${cvo.anwser}</td>
+     </tr>
+     </table>
+     </div>
+     </c:if>
  </section>
 </body>
 </html>

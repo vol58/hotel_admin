@@ -20,7 +20,7 @@ public interface MemberService {
     public String member_delete(HttpServletRequest request);
 
     //qna관련
-    public String qna_list(Model model);
+    public String qna_list(Model model,HttpServletRequest request);
     public String qna_content(HttpServletRequest request,Model model);
     public String qna_anwser_ok(CaskVO cvo);
 

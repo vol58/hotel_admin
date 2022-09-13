@@ -162,10 +162,21 @@ public class MemberServiceImpl implements MemberService{
  
 	//qna관련
 	@Override
-	public String qna_list(Model model) 
+	public String qna_list(Model model,HttpServletRequest request) 
 	{
-		 ArrayList<CaskVO> list=mapper.qna_list();
+		String state; // qna_list에서 select태그 밸류  > 0= 답변대기 / 1=답변완료
+		if(request.getParameter("state")==null)
+		{
+			state="0";
+		}
+		else
+		{
+			state=request.getParameter("state");
+		}
+		
+		 ArrayList<CaskVO> list=mapper.qna_list(state);
 		 model.addAttribute("list",list);
+		 model.addAttribute("state",state);
 		return "/member/qna_list";
 	}
 

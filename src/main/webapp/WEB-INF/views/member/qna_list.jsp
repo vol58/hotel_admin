@@ -14,14 +14,40 @@ section {
 	margin: auto;
 }
 </style>
+<script>
+window.onload=function() // 문서를읽을떄 온로드
+{
+  <c:if test="${state == '0'}">
+   document.getElementById("st").value="${state}";
+   <c:set var="title" value="답변대기중"/>
+   </c:if>
+  <c:if test="${state == '1'}">
+  document.getElementById("st").value="${state}";
+  <c:set var="title" value="답변완료"/>
+ </c:if>
+	}
+function state_change(state)
+  {
+	 location="qna_list?state="+state;
+} 
+</script>
 </head>
 <body>
 <section>
  <table width="600" align="center">
+ <caption>
+ <h2> ${title}</h2>
+ <select id="st" name="state" onchange="state_change(this.value)">
+  <option value="0"> 답변대기중 </option>
+  <option value="1"> 답변완료</option>
+ </select>
+
+ </caption>
   <tr>
    <td> 종류 </td>
    <td> 문의제목 </td>
    <td> 회원ID </td>
+   <td> 작성일 </td>
    <td> 상태  </td>
   </tr>
   <c:forEach items="${list}" var="cvo">
@@ -43,7 +69,7 @@ section {
     
    <td> <a href="qna_content?id=${cvo.id}">${cvo.title }</a></td>
    <td> ${cvo.userid } </td>
-   
+   <td> ${cvo.writeday }</td>
    <c:if test="${cvo.state==0}">
     <td><input type="button" onclick="location='qna_content?id=${cvo.id}'" value="답변하기"></td>
    </c:if>

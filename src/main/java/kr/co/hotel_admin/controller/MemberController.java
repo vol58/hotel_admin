@@ -62,9 +62,9 @@ public class MemberController {
     
     // qna부분
     @RequestMapping("/member/qna_list")
-    public String qna_list(Model model)
+    public String qna_list(Model model,HttpServletRequest request)
     {
-    	return service.qna_list(model);
+    	return service.qna_list(model,request);
     }
     @RequestMapping("/member/qna_content")
     public String qna_content(HttpServletRequest request,Model model)
