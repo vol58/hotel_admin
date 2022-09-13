@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import kr.co.hotel_admin.mapper.MemberMapper;
+import kr.co.hotel_admin.vo.CaskVO;
 import kr.co.hotel_admin.vo.MemberVO;
 
 @Service
@@ -77,7 +78,7 @@ public class MemberServiceImpl implements MemberService{
           {
         	  model.addAttribute("none","1");
           }
-          
+            
 		   model.addAttribute("list",list);
 		    model.addAttribute("page",page); // 현재페이지
 			model.addAttribute("pstart",pstart);
@@ -111,8 +112,13 @@ public class MemberServiceImpl implements MemberService{
 		 String id=request.getParameter("id");
 		 
 		 MemberVO mvo=mapper.member_content(id);
-		 mvo.setMemo(mvo.getMemo().replace("\r\n", "<br>")); // 메모내용 띄어쓰기
 		 
+		 String memo=mvo.getMemo();
+		 if(memo != null)
+		 {
+			 mvo.setMemo(memo.replace("\r\n", "<br>")); // 메모내용 띄어쓰기            
+		 }
+ 
 		 model.addAttribute("mvo",mvo);
 		 model.addAttribute("page",request.getParameter("page"));
 		 model.addAttribute("sel",request.getParameter("sel"));
@@ -152,6 +158,15 @@ public class MemberServiceImpl implements MemberService{
 		String id=request.getParameter("id");
 		mapper.member_delete(id);
 		return "redirect:/member/member_list?del=1";
+	}
+ 
+	//qna관련
+	@Override
+	public String qna_list(Model model) 
+	{
+		 ArrayList<CaskVO> list=mapper.qna_list();
+		 model.addAttribute("list",list);
+		return "/member/qna_list";
 	}
 
 	

@@ -18,5 +18,8 @@ public interface MemberService {
     public String update_ok(MemberVO mvo);
     public String member_delete(HttpServletRequest request);
 
+    //qna관련
+    public String qna_list(Model model);
+
 
 }

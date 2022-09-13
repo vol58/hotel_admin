@@ -34,4 +34,8 @@
  <delete id="member_delete">
   delete from member where id=#{param1}
  </delete>
+ 
+ <select id="qna_list" resultType="kr.co.hotel_admin.vo.CaskVO">
+  select * from cusask order by id desc
+ </select>
  </mapper>

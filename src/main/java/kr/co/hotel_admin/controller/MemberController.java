@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.hotel_admin.service.MemberService;
@@ -58,4 +59,15 @@ public class MemberController {
     	return service.member_delete(request);
     }
     
+    // qna부분
+    @RequestMapping("/member/qna_list")
+    public String qna_list(Model model)
+    {
+    	return service.qna_list(model);
+    }
+    @RequestMapping("/member/qna_content")
+    public String qna_content()
+    {
+    	return "/member/qna_content";
+    }
 }
