@@ -122,14 +122,15 @@ function state_change(state)
   <td>${mvo.pwd}</td>
   <td>${mvo.name}</td>
  
+ <td>
   <c:if test="${mvo.memo.length()>10}"> <!-- 고객 memo가 10자리이상이면 ... -->
     <c:set var="len" value="${fn:substring(mvo.memo,0,9)}   ....."/>
-     <td>${len}</td>
+     ${len}
   </c:if>
    <c:if test="${mvo.memo.length()<10}">
-    <td>${mvo.memo}</td>
+   ${mvo.memo}
   </c:if>
-  
+  </td> 
   </tr>    
  </c:forEach>
  

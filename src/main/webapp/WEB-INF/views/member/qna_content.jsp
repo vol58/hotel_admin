@@ -11,7 +11,7 @@
 section {
 	width: 1000px;
 	height: 700px;
-	margin: auto;
+	margin: auto;           
 	margin-top:50px;
 	margin-bottom:50px;
 }
@@ -36,6 +36,17 @@ width:800px;
  function pom_view() // 문의답변하는 폼 보이게
  {
 	 document.getElementById("tb2").style.display="block";
+	 document.getElementById("btn").style.display="none";
+ }
+ function check(my)
+ {
+	 if(my.anwser.value.length<4)
+		 {
+		 alert("답변을 입력하세요");
+		 return false;
+		 }
+	 else
+		 return true;
  }
 </script>
 </head>
@@ -81,8 +92,11 @@ width:800px;
      <c:if test="${cvo.state==0}">
      <c:set var="display" value="none"/>
       <td>
-      <b style="color:red"> 답변대기중</b> <br>
-       <input type="button" onclick="pom_view()" value="답변하기">  
+      <b style="color:red"> 답변대기중</b> 
+       <span id="btn">
+        <br><input type="button" onclick="pom_view()" value="답변하기"> 
+         <input type="button" value="목록" onclick="location='qna_list'"> 
+       </span>
       </td>
      </c:if>
      
@@ -97,7 +111,7 @@ width:800px;
     <!--  답변대기중일때 출력내용 -->
    <c:if test="${cvo.state==0}">
      <div id="tb2" style="display:${display}">
-    <form method="post" action="qna_anwser_ok">
+    <form method="post" action="qna_anwser_ok" onsubmit="return check(this)">
     <input type="hidden" name="id" value="${cvo.id}">
     <table width="600" align="center">
     <tr>
@@ -112,6 +126,7 @@ width:800px;
     <tr>
      <td colspan="2" align="center">
      <input type="submit" value="답변하기">
+     <input type="button" value="목록" onclick="location='qna_list'">
      </td>
     </tr>
      </table>
@@ -130,9 +145,12 @@ width:800px;
       <td height="200" width="200"><b>문의답변</b> </td>
       <td width="400">${cvo.anwser}</td>
      </tr>
+     <tr>
+      <td colspan="2" align="center"><a href="qna_list">목록</a> </td>
+     </tr>
      </table>
      </div>
-     </c:if>
+     </c:if>	
  </section>
 </body>
 </html>
