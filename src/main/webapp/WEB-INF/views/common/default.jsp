@@ -174,7 +174,14 @@ $(function()
 		    <li><a href="../member/member_list">예약관리</a></li>
 		  </ul>
 		</li>		
-		<li><a href="/hotel/book/book">예약관리</a></li>
+		<li class="a1">예약관리
+		  <ul class="mem">
+		    <li><a href="../book/sales">매출관리</a></li>
+		    <li><a href="../book/list">예약관리</a></li>
+		    <li><a href="">객실관리</a></li>
+		  </ul>
+		</li>		
+		
 		<li>게시판관리</li>
 		<li>상품관리</li>
 		<li>주문관리</li>

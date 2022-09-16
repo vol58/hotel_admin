@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import kr.co.hotel_admin.vo.BookVO;
+
 public interface BookService {
 
-	public String check_restroom(HttpServletRequest request, Model model);
+	public String list(BookVO bvo, Model model);
+	
 }

@@ -95,7 +95,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public String dobae() { // member_list 페이징잘되나 확인차 만든거 => 나중에 삭제
 		
-		String userid="test";
+		String userid="testa";
 		
 		for(int i=1;i<=50;i++)
 		{

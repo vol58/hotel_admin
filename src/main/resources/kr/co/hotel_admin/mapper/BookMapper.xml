@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="kr.co.hotel_admin.mapper.BookMapper">
- 	<select id="check_restroom" resultType="kr.co.hotel_admin.vo.BookVO">
- 		select * from room
+ 	<select id="list" resultType="kr.co.hotel_admin.vo.BookVO">
+ 		select b.*, m.name as username, m.phone as phone from book as b, member as m
+ 	
  	</select> 
  </mapper>

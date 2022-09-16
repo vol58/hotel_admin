@@ -2,9 +2,21 @@ package kr.co.hotel_admin.vo;
 
 public class BookVO {
 	int id, person, room, breakfast, totalprice, salescode;
-	String userid, checkin, checkout, add_needs, name, pay_method, pay_state, writeday;
+	String userid, checkin, checkout, add_needs, name, pay_method, pay_state, writeday, username, phone;
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public int getId() {
 		return id;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public void setId(int id) {
 		this.id = id;

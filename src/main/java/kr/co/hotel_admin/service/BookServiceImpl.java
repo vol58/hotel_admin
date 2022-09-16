@@ -21,15 +21,10 @@ public class BookServiceImpl implements BookService {
 	public BookMapper mapper;
 
 	@Override
-	public String check_restroom(HttpServletRequest request, Model model) {
-		 String[] date=request.getParameter("daterange").split(" - ");
-		 String checkin=date[0];
-		 String checkout=date[1];
-		 String person=request.getParameter("person");
-		 ArrayList<BookVO> list=mapper.check_restroom(checkin,checkout,person);
-		
-		 model.addAttribute("list",list);
+	public String list(BookVO bvo, Model model) {
+		 ArrayList<BookVO> blist=mapper.list();		
+		 model.addAttribute("blist",blist);
 		 
-		 return "/book/book1";
+		 return "/book/list";
 	}
 }
