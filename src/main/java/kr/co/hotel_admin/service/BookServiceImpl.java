@@ -39,8 +39,7 @@ public class BookServiceImpl implements BookService {
 		 String lastday=Integer.toString(cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 		 model.addAttribute("month",month);
 		 model.addAttribute("lastday",lastday);
-		 
-		 
+		 		 
 		 ArrayList<BookVO> blist=mapper.list();	 
 		
 		 model.addAttribute("blist",blist);		

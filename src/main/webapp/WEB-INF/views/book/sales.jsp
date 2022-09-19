@@ -19,7 +19,7 @@ section {
 	</tr>
 	<c:forEach var="i" begin="1" end="${lastday}" step="1">
 		<c:forEach items="${blist}" var="bvo">
-			<c:if test="${i==bvo.day}">
+	
 				<tr>
 					<td>${month}</td>
 					<td>${i}</td>
@@ -27,8 +27,8 @@ section {
 					<td>${bvo.pay_state}</td>
 					<td>${bvo.pay_state}</td>
 				</tr>
-			</c:if>
-				<c:if test="${i!=bvo.day}">
+
+			<%-- 	<c:if test="${i!=bvo.day}">
 				<tr>
 					<td>${month}</td>
 					<td>${i}</td>
@@ -36,7 +36,7 @@ section {
 					<td>${bvo.pay_state}</td>
 					<td>${bvo.pay_state}</td>
 				</tr>
-			</c:if>
+			</c:if> --%>
 		</c:forEach>
 	</c:forEach>
 
