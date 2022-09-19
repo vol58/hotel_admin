@@ -4,7 +4,7 @@
 <section> 
  <%-- <c:forEach items="${rvo}" var="rvo"> --%>
 	<form method="post" action="update_room_ok">
-		<table>
+		<table align="center">
 			<tr>
 				<td>객실명</td>
 				<td><input type="text" name="name" value="${rvo.name}"></td>

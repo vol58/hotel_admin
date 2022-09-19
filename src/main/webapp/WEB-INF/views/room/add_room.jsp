@@ -3,7 +3,7 @@
 
 <section>
 	<form method="post" action="add_room_ok">
-		<table>
+		<table align="center">
 			<tr>
 				<td>객실명</td>
 				<td><input type="text" name="name"></td>

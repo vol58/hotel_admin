@@ -178,7 +178,7 @@ $(function()
 		  <ul class="mem">
 		    <li><a href="../book/sales">매출관리</a></li>
 		    <li><a href="../book/list">예약관리</a></li>
-		    <li><a href="">객실관리</a></li>
+		    <li><a href="../room/list">객실관리</a></li>
 		  </ul>
 		</li>		
 		

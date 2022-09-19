@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <section> 
-	<table>
+	<table align="center">
 		<tr>
 			<td>DB ID</td>
 			<td>객실명</td>
