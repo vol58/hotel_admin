@@ -184,7 +184,13 @@ $(function()
 		
 		<li>게시판관리</li>
 		<li>상품관리</li>
-		<li>주문관리</li>
+		<li class="a1">주문관리
+		  <ul class="mem">
+		    <li><a href="">매출관리</a></li>
+		    <li><a href="../orderlist/list">주문관리</a></li>
+		    <li><a href="">배송관리</a></li>
+		  </ul>
+		</li>		
 		
 	</ul>
 	</nav>

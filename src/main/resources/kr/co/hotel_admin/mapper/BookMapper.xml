@@ -6,7 +6,7 @@
  <mapper namespace="kr.co.hotel_admin.mapper.BookMapper">
  	
  	<select id="list" resultType="kr.co.hotel_admin.vo.BookVO">
- 		select b.*, b, substring(b.salescode,7,2) as day, m.name as username, m.phone as phone from book as b, member as m
+ 		select b.*, substring(b.salescode,7,2) as day, m.name as username, m.phone as phone from book as b, member as m
  	
  	</select> 
  	
