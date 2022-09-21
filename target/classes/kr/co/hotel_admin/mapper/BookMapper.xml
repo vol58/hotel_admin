@@ -6,7 +6,13 @@
  <mapper namespace="kr.co.hotel_admin.mapper.BookMapper">
  	
  	<select id="list" resultType="kr.co.hotel_admin.vo.BookVO">
- 		select b.*, substring(b.salescode,7,2) as day, m.name as username, m.phone as phone from book as b, member as m
+ 		select b.*, 
+ 		substring(b.salescode,7,2) as day, 
+ 		m.name as username, 
+ 		m.phone as phone from book as b, 
+ 		member as m where b.${param1} like concat('%',#{param2},'%')
+ 		
+ 		<!-- 파라미터 줄때 #는 앞뒤로 따옴표가 생김 $는 안생김 -->
  	</select> 
  	
  	  <select id="exceptroom" resultType="kr.co.hotel_admin.vo.RoomVO">
@@ -62,10 +68,14 @@
  		sum(totalprice) as card from book where pay_method='card' group by writeday
  	</select>
  	
- 	 	<select id="get_onsite" resultType="kr.co.hotel_admin.vo.BookVO">
+ 	 <select id="get_onsite" resultType="kr.co.hotel_admin.vo.BookVO">
  		select writeday,
  		sum(totalprice) as onsite from book where pay_method='onsite' and pay_state='0' group by writeday
  	</select>
+ 	
+ 	<update id="pay_state_change">
+ 		update book set pay_method=#{param1}, pay_state=0, writeday=now() where id=#{param2}	
+ 	</update>
  	
  	
  </mapper>

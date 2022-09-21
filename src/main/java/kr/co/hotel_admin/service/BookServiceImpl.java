@@ -25,8 +25,25 @@ public class BookServiceImpl implements BookService {
 	public BookMapper mapper;
 
 	@Override
-	public String list(BookVO bvo, Model model) {
-		 ArrayList<BookVO> blist=mapper.list();	 
+	public String list(HttpServletRequest request, BookVO bvo, Model model) {
+		String sel;
+		if(request.getParameter("sel")==null)
+		{
+			sel="id";
+		} else {
+			sel=request.getParameter("sel");
+		}
+		
+		String keyword;
+		if(request.getParameter("keyword")==null)
+		{
+			keyword="";
+		} else{		
+			keyword=request.getParameter("keyword");
+		}
+		
+		
+		ArrayList<BookVO> blist=mapper.list(sel, keyword);	 
 		 model.addAttribute("blist",blist);		
 		
 		 return "/book/list";
@@ -85,6 +102,7 @@ public class BookServiceImpl implements BookService {
 	public String book3(BookVO bvo, Model model, HttpSession session) {
 		String userid=session.getAttribute("userid").toString();
 		bvo.setUserid(userid);
+		
 		//salescode
 		String sales=bvo.getCheckin();
 		Integer code=mapper.getCode(sales);
@@ -122,6 +140,16 @@ public class BookServiceImpl implements BookService {
 		mapper.book_cancel(salescode);
 		
 		return "/book/list";
+	}
+
+	@Override
+	public String pay_state_change(HttpServletRequest request) {
+		String id=request.getParameter("id");
+		String pay_method=request.getParameter("pay_method");
+		
+		mapper.pay_state_change(pay_method, id);
+		
+		return "redirect:/book/list";
 	}
 
 }

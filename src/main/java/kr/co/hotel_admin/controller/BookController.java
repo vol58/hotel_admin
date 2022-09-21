@@ -28,9 +28,9 @@ public class BookController {
 	}
 	
 	@RequestMapping("/book/list")
-	public String list(BookVO bvo, Model model)
+	public String list(HttpServletRequest request,BookVO bvo, Model model)
 	{
-		return service.list(bvo, model);
+		return service.list(request, bvo, model);
 	}
 	
 	@RequestMapping("/book/sales")
@@ -73,6 +73,12 @@ public class BookController {
 	{
 	
 		return service.book_cancel(request);
+	}
+	
+	@RequestMapping("/book/pay_state_change")
+	public String pay_state_change(HttpServletRequest request) {
+		
+		return service.pay_state_change(request);
 	}
 	
 	

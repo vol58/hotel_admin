@@ -22,12 +22,76 @@ th, td {
 	padding: 16px;
 }
 
+#pay{
+	width:200px;
+	height:150px;
+	background:gray;
+	border:2px solid black;
+	position:fixed;
+	display:none;
+}
 </style>
+<script>
+var id;
+function setId(){
+	return id
+}
+function show(n){	
+	id=n;
+	
+	var x=window.innerWidth;
+	var y=window.innerHeight;
+	
+	var xx=(x/2)-100;
+	var yy=(y/2)-30;
+	
+	document.getElementById("pay").style.left=xx+"px";
+	document.getElementById("pay").style.top=yy+"px";
+	
+	document.getElementById("pay").style.display="inline";
+}
+
+function paycard(id){
+	id=setId();
+	var pay_method="card";
+	location="pay_state_change?id="+id+"&pay_method="+pay_method;
+	hide();
+}
+
+function paycash(id){
+	id=setId();
+	var pay_method="onsite";
+	location="pay_state_change?id="+id+"&pay_method="+pay_method;
+	hide();
+}
+
+function hide(){
+	document.getElementById("pay").style.display="none";
+	id="";
+}
+
+</script>
+
 <section>
+<div id="pay" align="center">
+	<h2>결제방법</h2>
+	<input type="button" value="카드결제" onclick="paycard()">
+	<input type="button" value="현금결제" onclick="paycash()"><br><br>
+	<input type="button" value="취소" onclick="hide()">
+</div>
 	<table align="center">
 		<tr>
 			<td colspan="3"><a href="book">즉시예약</a></td>
-			<td colspan="5">검색 </td>
+			<td colspan="9" align="right">
+			<form method="post" action="list">
+			<select name="sel">
+				<option value="salescode">예약번호</option>
+				<option value="name">고객명</option>
+			</select>
+			<input type="text" name="keyword">
+			<input type="submit" value="검색">
+			</form>
+			</td>
 		</tr>
 		<tr>
 			<td>예약번호</td>
@@ -58,7 +122,11 @@ th, td {
 			<td>${bvo.add_needs}</td>
 			<td>${bvo.name}</td>
 			<td>${bvo.pay_method}</td>
-			<td>${bvo.pay_state}</td>
+			<td>
+				<c:if test="${bvo.pay_state==1}">
+					<input type="button" value="결제" onclick="show(${bvo.id})">
+ 				</c:if>
+			</td>
 		</tr>
 		</c:forEach>
 	</table>
