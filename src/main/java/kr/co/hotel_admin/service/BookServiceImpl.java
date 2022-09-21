@@ -35,14 +35,19 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public String sales(BookVO bvo, Model model) {
 		 Calendar cal=Calendar.getInstance();
-		 String month=Integer.toString(cal.get(Calendar.MONTH)+1);
+		 String yy=Integer.toString(cal.get(Calendar.YEAR));
+		 String mm=Integer.toString(cal.get(Calendar.MONTH)+1);
 		 String lastday=Integer.toString(cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-		 model.addAttribute("month",month);
+		 
+		 model.addAttribute("yy",yy);
+		 model.addAttribute("mm",mm);
 		 model.addAttribute("lastday",lastday);
 		 		 
-		 ArrayList<BookVO> blist=mapper.list();	 
+		ArrayList<BookVO> card=mapper.get_card();
+		ArrayList<BookVO> onsite=mapper.get_onsite();
 		
-		 model.addAttribute("blist",blist);		
+		model.addAttribute("card",card);
+		model.addAttribute("onsite",onsite);
 
 		 return "/book/sales";
 	}

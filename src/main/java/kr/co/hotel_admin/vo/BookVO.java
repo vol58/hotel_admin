@@ -1,11 +1,28 @@
 package kr.co.hotel_admin.vo;
 
 public class BookVO {
-	int id, person, room, breakfast, totalprice, salescode;
+	int id, person, room, breakfast, totalprice, salescode, card, onsite;
 	String userid, checkin, checkout, add_needs, name, pay_method, pay_state, writeday;
 
+	public int getCard() {
+		return card;
+	}
+
+	public void setCard(int card) {
+		this.card = card;
+	}
+
+	public int getOnsite() {
+		return onsite;
+	}
+
+	public void setOnsite(int onsite) {
+		this.onsite = onsite;
+	}
 
 
+	
+	
 	public int getId() {
 		return id;
 	}

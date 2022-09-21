@@ -16,4 +16,8 @@ public interface BookMapper {
 	public BookVO book3(String salescode);
 	public ArrayList<BookVO> list1(String userid);
 	public void book_cancel(String salescode);
+	public ArrayList<BookVO> get_card();
+	public ArrayList<BookVO> get_onsite();
+	
+
 }

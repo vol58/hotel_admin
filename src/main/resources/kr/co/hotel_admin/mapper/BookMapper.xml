@@ -7,7 +7,6 @@
  	
  	<select id="list" resultType="kr.co.hotel_admin.vo.BookVO">
  		select b.*, substring(b.salescode,7,2) as day, m.name as username, m.phone as phone from book as b, member as m
- 	
  	</select> 
  	
  	  <select id="exceptroom" resultType="kr.co.hotel_admin.vo.RoomVO">
@@ -57,6 +56,16 @@
  	<update id="book_cancel">
  		update book set pay_state=3 where salescode=#{param1}
  	</update> 
+ 	
+ 	<select id="get_card" resultType="kr.co.hotel_admin.vo.BookVO">
+ 		select writeday,
+ 		sum(totalprice) as card from book where pay_method='card' group by writeday
+ 	</select>
+ 	
+ 	 	<select id="get_onsite" resultType="kr.co.hotel_admin.vo.BookVO">
+ 		select writeday,
+ 		sum(totalprice) as onsite from book where pay_method='onsite' and pay_state='0' group by writeday
+ 	</select>
  	
  	
  </mapper>
