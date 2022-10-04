@@ -143,6 +143,7 @@ $(function()
 				$("nav .mem").hide();
 			 });
 });
+
 		   
 </script>
 <decorator:head/>
@@ -182,8 +183,17 @@ $(function()
 		  </ul>
 		</li>		
 		
-		<li>게시판관리</li>
-		<li>상품관리</li>
+		<li>게시판관리
+		  <ul class="noti">
+		   <li><a href="../notice/notice_list?page=1">공지게시판</a></li>
+		  </ul>
+		</li>
+		<li>쇼핑몰관리
+		   <ul class="pro">
+		    <li>상품등록</li>
+		    <li><a href="../product/pro_edit_list">상품관리</a></li>
+		   </ul>
+		  </li>
 		<li class="a1">주문관리
 		  <ul class="mem">
 		    <li><a href="">매출관리</a></li>
